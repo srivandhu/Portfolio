@@ -1,0 +1,1799 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vandhana Vijayakumar &mdash; Full Stack Developer &amp; AI Engineer</title>
+  <meta name="description" content="Portfolio of Vandhana Vijayakumar. BCA Scholar at CHRIST (Deemed to be University), Bengaluru (2024-27). Specializing in resilient web applications, robust database schemas, and computer vision pipelines.">
+
+  <!-- Curated Font Pairing: Editorial Serif (Newsreader), Modern Sans (Plus Jakarta Sans), and Precise Monospace (JetBrains Mono) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            canvas: '#F8FAFC',       /* Slate 50 - clean, crisp architectural paper */
+            surface: '#FFFFFF',      /* Pure white card backgrounds */
+            surfaceAlt: '#F1F5F9',   /* Slate 100 - soft elevated surfaces */
+            surfaceHover: '#E2E8F0', /* Slate 200 - hover state */
+            ink: '#0F172A',          /* Slate 900 - rich deep charcoal */
+            inkMuted: '#475569',     /* Slate 600 - readable comfortable body text */
+            inkSubtle: '#64748B',    /* Slate 500 - meta & secondary tags */
+            inkFaint: '#94A3B8',     /* Slate 400 - faint details */
+            hairline: '#E2E8F0',     /* Slate 200 - hairline border */
+            hairlineDark: '#CBD5E1', /* Slate 300 - accentuated border */
+            primary: '#1E40AF',      /* Deep Royal Blue 800 - cohesive authoritative accent */
+            primaryHover: '#1D4ED8', /* Blue 700 */
+            primaryLight: '#EFF6FF', /* Blue 50 - subtle pill backgrounds */
+            primaryBorder: '#BFDBFE',/* Blue 200 */
+            pine: '#0F766E',         /* Teal 700 - verified state */
+            pineLight: '#F0FDFA',    /* Teal 50 */
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            serif: ['"Newsreader"', 'serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          boxShadow: {
+            'card': '0 1px 3px 0 rgba(15, 23, 42, 0.04), 0 4px 12px -2px rgba(15, 23, 42, 0.05)',
+            'card-hover': '0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 16px -6px rgba(15, 23, 42, 0.04)',
+            'modal': '0 25px 50px -12px rgba(15, 23, 42, 0.25)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F8FAFC;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94A3B8;
+    }
+
+    /* Reading Progress Bar */
+    #readingProgress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2.5px;
+      background: linear-gradient(90deg, #1E40AF, #3B82F6);
+      width: 0%;
+      z-index: 100;
+      transition: width 0.1s ease-out;
+    }
+
+    /* Architectural Studio Hairline Grid */
+    .studio-grid {
+      background-size: 32px 32px;
+      background-image: 
+        linear-gradient(to right, rgba(15, 23, 42, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(15, 23, 42, 0.03) 1px, transparent 1px);
+    }
+
+    /* Clean Card Styling with Transitions */
+    .pro-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.04), 0 4px 12px -2px rgba(15, 23, 42, 0.05);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
+    }
+    .pro-card:hover {
+      border-color: #CBD5E1;
+      box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 16px -6px rgba(15, 23, 42, 0.04);
+      transform: translateY(-2px);
+    }
+
+    /* Staggered Scroll Reveal */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1), transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-on-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Filter Tag Animation */
+    .filter-item {
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+    .filter-item.is-hidden {
+      display: none;
+      opacity: 0;
+      transform: scale(0.96);
+    }
+
+    /* Scanner Animation for CheckMate Simulation */
+    @keyframes scanline {
+      0% { top: 0%; opacity: 0.8; }
+      50% { opacity: 1; }
+      100% { top: 100%; opacity: 0.8; }
+    }
+    .animate-scanline {
+      animation: scanline 2.8s ease-in-out infinite;
+    }
+  </style>
+</head>
+
+<body class="bg-canvas text-ink font-sans antialiased min-h-screen relative overflow-x-hidden selection:bg-primaryLight selection:text-primary">
+
+  <!-- Top Reading Progress Indicator -->
+  <div id="readingProgress"></div>
+
+  <!-- Subtle Studio Grid Background -->
+  <div class="fixed inset-0 pointer-events-none z-0 studio-grid opacity-75"></div>
+
+  <!-- Primary Layout Shell -->
+  <div class="relative z-10 flex flex-col min-h-screen">
+
+    <!-- ========================================== -->
+    <!-- TOP NAVIGATION HEADER -->
+    <!-- ========================================== -->
+    <header class="sticky top-0 z-40 w-full backdrop-blur-xl bg-canvas/90 border-b border-hairline transition-all duration-200">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        
+        <!-- Left Identity Monogram -->
+        <a href="#hero" class="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg p-1">
+          <div class="w-8 h-8 rounded-md bg-ink text-white flex items-center justify-center font-mono font-bold text-xs tracking-wider group-hover:bg-primary transition-colors">
+            VV
+          </div>
+          <div class="flex flex-col">
+            <span class="font-bold text-sm tracking-tight text-ink group-hover:text-primary transition-colors">Vandhana Vijayakumar</span>
+            <span class="font-mono text-[10px] text-inkSubtle flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+              Full Stack &bull; AI Systems
+            </span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Items -->
+        <nav class="hidden md:flex items-center gap-6 text-xs font-mono uppercase tracking-wider text-inkMuted">
+          <a href="#about" class="hover:text-primary transition-colors">Telemetry</a>
+          <a href="#projects" class="hover:text-primary transition-colors">Projects</a>
+          <a href="#experience" class="hover:text-primary transition-colors">Experience</a>
+          <a href="#skills" class="hover:text-primary transition-colors">Skills</a>
+          <a href="#certifications" class="hover:text-primary transition-colors">Certifications</a>
+          <a href="#leadership" class="hover:text-primary transition-colors">Grounding</a>
+          <a href="#contact" class="hover:text-primary transition-colors">Contact</a>
+        </nav>
+
+        <!-- Right Quick Actions -->
+        <div class="flex items-center gap-2.5">
+          
+          <!-- Sound Toggle Pill -->
+          <button id="sfxToggleBtn" aria-label="Toggle UI Acoustic Feedback"
+                  class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-md bg-surface border border-hairline text-inkSubtle hover:text-ink hover:border-hairlineDark font-mono text-[10px] transition-all" title="Toggle UI sound feedback">
+            <i data-lucide="volume-2" class="w-3.5 h-3.5 text-primary" id="sfxIcon"></i>
+            <span id="sfxLabel">SFX</span>
+          </button>
+
+          <!-- Primary Resume Download Pill -->
+          <!-- NOTE: Dropping VANDHANA_VIJAYAKUMAR_RESUME.pdf in the root folder makes this instantly downloadable -->
+          <a href="VANDHANA_VIJAYAKUMAR_RESUME.pdf" download="VANDHANA_VIJAYAKUMAR_RESUME.pdf"
+             class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-md bg-ink hover:bg-primary text-white text-xs font-mono font-medium transition-all duration-150 shadow-sm active:scale-95">
+            <i data-lucide="download" class="w-3.5 h-3.5"></i>
+            <span>Resume</span>
+            <span class="text-white/60 text-[10px]">.pdf</span>
+          </a>
+
+          <!-- Mobile Hamburger Toggle -->
+          <button id="mobileMenuBtn" aria-label="Toggle navigation drawer"
+                  class="md:hidden p-2 rounded-md bg-surface border border-hairline text-ink hover:text-primary">
+            <i data-lucide="menu" class="w-5 h-5"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Dropdown Navigation Drawer -->
+      <div id="mobileMenu" class="hidden md:hidden border-b border-hairline bg-surface px-6 py-4 space-y-3 font-mono text-xs uppercase tracking-wider text-inkMuted shadow-lg">
+        <a href="#about" class="block py-1 hover:text-primary mobile-link">01 // Telemetry &bull; Overview</a>
+        <a href="#projects" class="block py-1 hover:text-primary mobile-link">02 // Featured Projects</a>
+        <a href="#experience" class="block py-1 hover:text-primary mobile-link">03 // Professional Experience</a>
+        <a href="#skills" class="block py-1 hover:text-primary mobile-link">04 // Capabilities &amp; Skills</a>
+        <a href="#certifications" class="block py-1 hover:text-primary mobile-link">05 // Verified Credentials</a>
+        <a href="#leadership" class="block py-1 hover:text-primary mobile-link">06 // Leadership &amp; Grounding</a>
+        <a href="#contact" class="block py-1 hover:text-primary mobile-link">07 // Contact &amp; Dispatch</a>
+        <div class="pt-2 border-t border-hairline">
+          <a href="VANDHANA_VIJAYAKUMAR_RESUME.pdf" download="VANDHANA_VIJAYAKUMAR_RESUME.pdf"
+             class="flex items-center justify-center gap-2 w-full py-2.5 rounded-md bg-primary text-white font-mono text-xs font-semibold">
+            <i data-lucide="download" class="w-4 h-4"></i>
+            Download Resume (PDF)
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-grow max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-24">
+
+      <!-- ========================================== -->
+      <!-- SECTION 1: HERO & CODE-CRAFTED STATUS HUB -->
+      <!-- ========================================== -->
+      <section id="hero" class="pt-4 lg:pt-8 reveal-on-scroll">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          <!-- Narrative Left Column (7 cols) -->
+          <div class="lg:col-span-7 space-y-6">
+            
+            <!-- Live Status & Presence Pill -->
+            <div class="inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-surface border border-hairline font-mono text-xs text-inkSubtle shadow-sm">
+              <span class="flex h-2 w-2 relative">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
+              </span>
+              <span class="font-medium text-ink">Available for SWE &amp; AI Roles</span>
+              <span class="text-hairlineDark">&bull;</span>
+              <span id="liveTimeClock" class="text-inkSubtle">Bengaluru, IN &bull; --:--:--</span>
+            </div>
+
+            <!-- Main Heading & Title -->
+            <div class="space-y-3">
+              <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif text-ink tracking-tight leading-[1.12]">
+                Vandhana <span class="italic text-primary font-normal">Vijayakumar</span>
+              </h1>
+              <p class="font-mono text-sm sm:text-base text-inkSubtle tracking-wide font-medium">
+                Full Stack Developer &bull; AI Engineer
+              </p>
+            </div>
+
+            <!-- Subtitle Summary -->
+            <p class="text-inkMuted text-base sm:text-lg leading-relaxed font-normal">
+              BCA student at <span class="text-ink font-semibold">CHRIST (Deemed to be University)</span>, Bengaluru (Batch 2024–27). Specializing in architecting scalable web applications, robust database schemas, and intelligent computer vision pipelines.
+            </p>
+
+            <!-- Primary CTAs & Social Quicklinks -->
+            <div class="pt-2 flex flex-wrap items-center gap-3">
+              <!-- Primary Resume Download Button -->
+              <a href="VANDHANA_VIJAYAKUMAR_RESUME.pdf" download="VANDHANA_VIJAYAKUMAR_RESUME.pdf"
+                 class="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-ink hover:bg-primary text-white text-xs font-mono font-medium transition-all shadow-sm active:scale-95">
+                <i data-lucide="download" class="w-4 h-4"></i>
+                <span>Download Resume</span>
+                <span class="text-white/60 text-[10px]">PDF</span>
+              </a>
+
+              <!-- Secondary Explore Projects -->
+              <a href="#projects"
+                 class="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-surface hover:bg-surfaceAlt border border-hairline text-xs font-mono font-medium text-ink transition-all active:scale-95">
+                <span>Explore Projects</span>
+                <i data-lucide="arrow-down" class="w-3.5 h-3.5 text-inkSubtle"></i>
+              </a>
+
+              <!-- Copy Email Action -->
+              <button id="heroCopyEmailBtn" aria-label="Copy email address"
+                      class="inline-flex items-center gap-2 px-4 py-2.5 rounded-md bg-surface hover:bg-surfaceAlt border border-hairline text-xs font-mono text-inkSubtle hover:text-ink transition-all active:scale-95">
+                <i data-lucide="copy" class="w-3.5 h-3.5 text-primary" id="heroCopyIcon"></i>
+                <span id="heroCopyText">Copy Email</span>
+              </button>
+            </div>
+
+            <!-- Direct Contact Links -->
+            <div class="flex flex-wrap items-center gap-4 pt-1 text-xs font-mono text-inkSubtle">
+              <a href="mailto:vandhana0412@gmail.com" class="hover:text-primary transition-colors flex items-center gap-1.5">
+                <i data-lucide="mail" class="w-3.5 h-3.5 text-primary"></i> vandhana0412@gmail.com
+              </a>
+              <span>&bull;</span>
+              <a href="tel:+916382724070" class="hover:text-primary transition-colors flex items-center gap-1.5">
+                <i data-lucide="phone" class="w-3.5 h-3.5 text-primary"></i> +91 63827 24070
+              </a>
+              <span>&bull;</span>
+              <a href="https://www.linkedin.com/in/vandhana-vijayakumar" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors flex items-center gap-1.5">
+                <i data-lucide="linkedin" class="w-3.5 h-3.5 text-primary"></i> LinkedIn Profile
+              </a>
+            </div>
+
+          </div>
+
+          <!-- Code-Crafted Engineering Status Hub Right Column (5 cols) -->
+          <!-- Replaces photo avatar with a rich, interactive architectural badge and live telemetry card -->
+          <div class="lg:col-span-5 w-full">
+            <div class="pro-card rounded-xl p-5 bg-surface space-y-4">
+              
+              <!-- Card Header -->
+              <div class="flex items-center justify-between border-b border-hairline pb-3">
+                <div class="flex items-center gap-2">
+                  <div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+                  <span class="font-mono text-xs font-bold text-ink tracking-wider">DEV_PROFILE // SPEC</span>
+                </div>
+                <span class="font-mono text-[10px] text-primary bg-primaryLight px-2 py-0.5 rounded border border-primaryBorder">
+                  ID: VV-BLR-2026
+                </span>
+              </div>
+
+              <!-- Candidate Monogram & Grounding -->
+              <div class="p-4 rounded-lg bg-surfaceAlt border border-hairline flex items-center gap-4">
+                <div class="w-14 h-14 rounded-lg bg-ink text-white flex flex-col items-center justify-center font-mono font-bold text-lg shadow-sm border border-hairlineDark">
+                  <span>VV</span>
+                  <span class="text-[8px] font-normal text-white/70 tracking-widest uppercase">DEV</span>
+                </div>
+                <div class="space-y-0.5">
+                  <div class="font-serif font-bold text-base text-ink">Vandhana Vijayakumar</div>
+                  <div class="font-mono text-xs text-primary font-medium">BCA &bull; 2024–27 &bull; CGPA: 3.3/4.0</div>
+                  <div class="font-mono text-[11px] text-inkSubtle">CHRIST (Deemed to be University), Bengaluru</div>
+                </div>
+              </div>
+
+              <!-- Live Engineering Focus Tags -->
+              <div class="space-y-2">
+                <div class="text-[11px] font-mono font-semibold text-ink uppercase tracking-wider flex items-center justify-between">
+                  <span>CORE SPECIALIZATION</span>
+                  <span class="text-inkSubtle font-normal">SYS_LEVEL: 1.0</span>
+                </div>
+                <div class="grid grid-cols-2 gap-2 font-mono text-xs">
+                  <div class="p-2.5 rounded bg-surface border border-hairline flex items-center gap-2">
+                    <i data-lucide="layers" class="w-3.5 h-3.5 text-primary"></i>
+                    <span class="text-ink font-medium">Full Stack Web</span>
+                  </div>
+                  <div class="p-2.5 rounded bg-surface border border-hairline flex items-center gap-2">
+                    <i data-lucide="eye" class="w-3.5 h-3.5 text-primary"></i>
+                    <span class="text-ink font-medium">Computer Vision</span>
+                  </div>
+                  <div class="p-2.5 rounded bg-surface border border-hairline flex items-center gap-2">
+                    <i data-lucide="database" class="w-3.5 h-3.5 text-primary"></i>
+                    <span class="text-ink font-medium">Relational DBs</span>
+                  </div>
+                  <div class="p-2.5 rounded bg-surface border border-hairline flex items-center gap-2">
+                    <i data-lucide="cloud" class="w-3.5 h-3.5 text-primary"></i>
+                    <span class="text-ink font-medium">Edge Compute</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Terminal Stack Snippet -->
+              <div class="p-3 rounded-lg bg-ink text-white font-mono text-[11px] space-y-1">
+                <div class="flex items-center justify-between text-white/50 text-[10px] border-b border-white/10 pb-1">
+                  <span>stack.env</span>
+                  <span class="text-emerald-400">active</span>
+                </div>
+                <div class="text-white/80 pt-1">
+                  <span class="text-blue-400">$</span> primary_runtime: [React, Node.js, Python, Supabase, MySQL, OpenCV]
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SECTION 2: DEVELOPER TELEMETRY & "NOW" HUB -->
+      <!-- ========================================== -->
+      <section id="about" class="space-y-6 reveal-on-scroll">
+        <div class="flex items-center justify-between border-b border-hairline pb-3">
+          <div class="font-mono text-xs font-semibold uppercase tracking-widest text-primary flex items-center gap-2">
+            <i data-lucide="activity" class="w-3.5 h-3.5"></i>
+            <span>01 // Developer Telemetry &amp; Current Focus</span>
+          </div>
+          <span class="font-mono text-[11px] text-inkSubtle">BENGALURU NODE</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+          
+          <!-- Metric 1: Education -->
+          <div class="pro-card rounded-xl p-4 bg-surface space-y-1">
+            <div class="text-[11px] font-mono text-inkSubtle flex items-center gap-1.5">
+              <i data-lucide="graduation-cap" class="w-3.5 h-3.5 text-primary"></i>
+              Education
+            </div>
+            <div class="font-serif font-bold text-base text-ink">CHRIST University</div>
+            <div class="font-mono text-xs text-inkSubtle">BCA &bull; Batch 2024–27</div>
+          </div>
+
+          <!-- Metric 2: Academic Metric -->
+          <div class="pro-card rounded-xl p-4 bg-surface space-y-1">
+            <div class="text-[11px] font-mono text-inkSubtle flex items-center gap-1.5">
+              <i data-lucide="award" class="w-3.5 h-3.5 text-primary"></i>
+              Academic Standing
+            </div>
+            <div class="font-serif font-bold text-lg text-primary">3.3 <span class="text-xs font-mono font-normal text-inkSubtle">/ 4.0 CGPA</span></div>
+            <div class="font-mono text-xs text-inkSubtle">Consistent Performer</div>
+          </div>
+
+          <!-- Metric 3: Coordinates -->
+          <div class="pro-card rounded-xl p-4 bg-surface space-y-1">
+            <div class="text-[11px] font-mono text-inkSubtle flex items-center gap-1.5">
+              <i data-lucide="map-pin" class="w-3.5 h-3.5 text-primary"></i>
+              Coordinates
+            </div>
+            <div class="font-serif font-bold text-base text-ink">Bengaluru, IN</div>
+            <div class="font-mono text-xs text-inkSubtle">Karnataka &bull; 560029</div>
+          </div>
+
+          <!-- Metric 4: Readiness -->
+          <div class="pro-card rounded-xl p-4 bg-surface space-y-1">
+            <div class="text-[11px] font-mono text-inkSubtle flex items-center gap-1.5">
+              <i data-lucide="check-circle" class="w-3.5 h-3.5 text-primary"></i>
+              Status
+            </div>
+            <div class="font-serif font-bold text-base text-ink">Open to Offers</div>
+            <div class="font-mono text-xs text-emerald-600 font-medium">SWE &bull; Full Stack &bull; AI</div>
+          </div>
+
+        </div>
+
+        <!-- Currently In The Lab Note -->
+        <div class="pro-card rounded-xl p-5 sm:p-6 bg-surfaceAlt border border-hairline space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="font-mono text-xs font-bold text-ink uppercase tracking-wider flex items-center gap-2">
+              <i data-lucide="terminal" class="w-3.5 h-3.5 text-primary"></i>
+              <span>CURRENTLY IN THE LAB // ACTIVE INQUIRIES</span>
+            </span>
+            <span class="font-mono text-[10px] text-inkSubtle">OCTOBER 2026 LOG</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 font-mono text-xs pt-1">
+            <div class="p-3 rounded-lg bg-surface border border-hairline space-y-1">
+              <span class="text-primary font-semibold block">01 &bull; Edge Micro-Databases</span>
+              <p class="text-inkMuted text-[11px] leading-relaxed font-sans">
+                Benchmarking Cloudflare Workers with geographically distributed read-replicas for under 5ms event confirmation.
+              </p>
+            </div>
+            <div class="p-3 rounded-lg bg-surface border border-hairline space-y-1">
+              <span class="text-primary font-semibold block">02 &bull; On-Device CV Models</span>
+              <p class="text-inkMuted text-[11px] leading-relaxed font-sans">
+                Quantizing OpenCV object detection models to operate with zero cloud reliance on battery-constrained Android devices.
+              </p>
+            </div>
+            <div class="p-3 rounded-lg bg-surface border border-hairline space-y-1">
+              <span class="text-primary font-semibold block">03 &bull; Relational Schema Hardening</span>
+              <p class="text-inkMuted text-[11px] leading-relaxed font-sans">
+                Designing normalized PostgreSQL &amp; MySQL schemas with foreign keys and index strategies to eliminate query bottlenecks.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SECTION 3: FEATURED ENGINEERING PROJECTS -->
+      <!-- ========================================== -->
+      <!-- Entirely photo-free: Replaced missing image tags with live, code-rendered UI simulators -->
+      <section id="projects" class="space-y-8 reveal-on-scroll">
+        <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-hairline pb-3">
+          <div>
+            <span class="font-mono text-xs text-primary uppercase tracking-widest">// 02 &bull; PRODUCTION SPECIFICATIONS</span>
+            <h2 class="text-3xl font-serif text-ink tracking-tight mt-1">Featured Engineering Projects</h2>
+          </div>
+          <p class="text-xs font-mono text-inkSubtle">Live interactive architectural representations</p>
+        </div>
+
+        <div class="space-y-8">
+
+          <!-- PROJECT 1: RenewWise | Renewal Management Platform -->
+          <div class="pro-card rounded-xl p-6 sm:p-8 bg-surface space-y-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+              
+              <!-- Left Narrative (6 cols) -->
+              <div class="lg:col-span-6 space-y-4">
+                <div class="flex items-center gap-2 font-mono text-xs">
+                  <span class="px-2.5 py-0.5 rounded bg-primaryLight text-primary border border-primaryBorder font-semibold">01 // PLATFORM ARCHITECTURE</span>
+                  <span class="text-inkSubtle">DESKTOP SYSTEM</span>
+                </div>
+
+                <h3 class="text-2xl sm:text-3xl font-serif text-ink font-bold">
+                  RenewWise &mdash; Renewal Management Platform
+                </h3>
+
+                <p class="text-inkMuted text-sm leading-relaxed">
+                  Desktop platform built to manage community events, donations, and volunteer logistics. Designed relational database schemas in Supabase with integrated serverless edge backend logic in Cloudflare to maintain real-time auditability across high-concurrency volunteer drives.
+                </p>
+
+                <!-- Technical Specs Grid -->
+                <div class="grid grid-cols-2 gap-3 pt-1 font-mono text-xs">
+                  <div class="p-3 rounded-lg bg-surfaceAlt border border-hairline">
+                    <span class="text-inkSubtle block text-[10px] uppercase">Data Tier</span>
+                    <span class="text-ink font-semibold">Supabase (PostgreSQL)</span>
+                  </div>
+                  <div class="p-3 rounded-lg bg-surfaceAlt border border-hairline">
+                    <span class="text-inkSubtle block text-[10px] uppercase">Edge Compute</span>
+                    <span class="text-ink font-semibold">Cloudflare Workers</span>
+                  </div>
+                </div>
+
+                <div class="flex flex-wrap gap-2 pt-1 font-mono text-xs">
+                  <span class="px-2.5 py-1 rounded bg-surfaceAlt border border-hairline text-ink">Supabase</span>
+                  <span class="px-2.5 py-1 rounded bg-surfaceAlt border border-hairline text-ink">Cloudflare</span>
+                  <span class="px-2.5 py-1 rounded bg-surfaceAlt border border-hairline text-ink">SQL</span>
+                  <span class="px-2.5 py-1 rounded bg-surfaceAlt border border-hairline text-ink">Edge Backend Logic</span>
+                </div>
+              </div>
+
+              <!-- Right Code-Rendered UI Simulator (6 cols) -->
+              <!-- Replaces image with a crisp, pure HTML/CSS interactive dashboard view -->
+              <div class="lg:col-span-6 rounded-lg overflow-hidden border border-hairline bg-surface shadow-sm">
+                
+                <!-- Browser Chrome Header -->
+                <div class="h-8 bg-surfaceAlt px-3 flex items-center justify-between border-b border-hairline">
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-2.5 h-2.5 rounded-full bg-slate-300"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-slate-300"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-slate-300"></span>
+                  </div>
+                  <span class="font-mono text-[10px] text-inkSubtle">renewwise.internal &bull; Edge Ledger</span>
+                  <div class="flex items-center gap-1 text-[10px] font-mono text-emerald-600">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span id="renewWiseSyncStatus">4.2ms edge</span>
+                  </div>
+                </div>
+
+                <!-- Live Interface Content -->
+                <div class="p-4 space-y-3 font-sans bg-canvas">
+                  
+                  <!-- Metric Cards -->
+                  <div class="grid grid-cols-2 gap-2 text-xs">
+                    <div class="p-3 rounded bg-surface border border-hairline">
+                      <div class="text-[10px] font-mono text-inkSubtle">ACTIVE VOLUNTEER SHIFTS</div>
+                      <div class="text-lg font-serif font-bold text-ink">340 Shifts</div>
+                      <div class="text-[10px] text-emerald-600 font-mono">&#8593; 100% Filled Today</div>
+                    </div>
+                    <div class="p-3 rounded bg-surface border border-hairline">
+                      <div class="text-[10px] font-mono text-inkSubtle">COMMUNITY FUND LEDGER</div>
+                      <div class="text-lg font-serif font-bold text-primary">&#8377;42,85,000</div>
+                      <div class="text-[10px] text-inkSubtle font-mono">14 Events Managed</div>
+                    </div>
+                  </div>
+
+                  <!-- Live Transaction Ledger Table -->
+                  <div class="rounded border border-hairline bg-surface overflow-hidden text-[11px] font-mono">
+                    <div class="bg-surfaceAlt px-3 py-1.5 border-b border-hairline flex justify-between text-inkSubtle text-[10px]">
+                      <span>EVENT_DISPATCH</span>
+                      <span>LEDGER_ID</span>
+                      <span>STATUS</span>
+                    </div>
+                    <div class="divide-y divide-hairline">
+                      <div class="px-3 py-2 flex justify-between items-center">
+                        <span class="font-sans text-ink font-medium">Bengaluru Relief Mission</span>
+                        <span class="text-inkSubtle">#RW-8849-SUP</span>
+                        <span class="text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded text-[10px]">SYNCED</span>
+                      </div>
+                      <div class="px-3 py-2 flex justify-between items-center">
+                        <span class="font-sans text-ink font-medium">CSA Community Outreach</span>
+                        <span class="text-inkSubtle">#RW-8850-CLD</span>
+                        <span class="text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded text-[10px]">SYNCED</span>
+                      </div>
+                      <div class="px-3 py-2 flex justify-between items-center">
+                        <span class="font-sans text-ink font-medium">Student Volunteer Drive</span>
+                        <span class="text-inkSubtle">#RW-8851-EDG</span>
+                        <span class="text-primary bg-primaryLight px-1.5 py-0.5 rounded text-[10px]">PROCESSING</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Architecture Spec Pill -->
+                  <div class="flex items-center justify-between text-[11px] font-mono text-inkSubtle pt-1">
+                    <span>ACID Compliant Database Schema</span>
+                    <span class="text-primary font-medium">Zero-Cold-Start Edge</span>
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+          <!-- PROJECT 2: CheckMate | Smart Item Verification System -->
+          <div class="pro-card rounded-xl p-6 sm:p-8 bg-surface space-y-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+              
+              <!-- Left Code-Rendered UI Simulator (6 cols) -->
+              <!-- Replaces image with a pure HTML/CSS interactive Computer Vision Camera HUD -->
+              <div class="lg:col-span-6 rounded-lg overflow-hidden border border-hairline bg-surface shadow-sm order-2 lg:order-1">
+                
+                <div class="h-8 bg-surfaceAlt px-3 flex items-center justify-between border-b border-hairline">
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-2.5 h-2.5 rounded-full bg-slate-300"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-slate-300"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-slate-300"></span>
+                  </div>
+                  <span class="font-mono text-[10px] text-inkSubtle">checkmate.cv &bull; Optical Feed</span>
+                  <span class="font-mono text-[10px] text-emerald-600 font-semibold">60.2 FPS</span>
+                </div>
+
+                <!-- Camera Viewfinder with Visual Reticles & Checklist -->
+                <div class="p-4 bg-canvas space-y-3 font-mono text-xs">
+                  
+                  <div class="relative h-44 rounded-md bg-ink p-3 overflow-hidden border border-hairline flex flex-col justify-between text-white">
+                    <!-- Scanner overlay line -->
+                    <div class="absolute left-0 right-0 h-0.5 bg-blue-400 opacity-75 animate-scanline pointer-events-none"></div>
+
+                    <div class="flex items-center justify-between text-[10px] z-10">
+                      <span class="text-emerald-400 flex items-center gap-1">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                        CV_MODEL: ACTIVE
+                      </span>
+                      <span class="text-slate-400">INPUT: 1080p_OPTICAL</span>
+                    </div>
+
+                    <!-- Target Bounding Boxes -->
+                    <div class="relative h-24 my-auto flex items-center justify-around z-10">
+                      <!-- Box 1 -->
+                      <div class="border-2 border-emerald-400 bg-emerald-400/10 rounded px-2 py-1 text-center">
+                        <div class="text-[9px] text-emerald-300 font-bold">KEY_PASS: 98%</div>
+                        <div class="text-[8px] text-slate-300">[VERIFIED]</div>
+                      </div>
+                      <!-- Box 2 -->
+                      <div class="border-2 border-blue-400 bg-blue-400/10 rounded px-2 py-1 text-center">
+                        <div class="text-[9px] text-blue-300 font-bold">LAPTOP_BAG: 96%</div>
+                        <div class="text-[8px] text-slate-300">[VERIFIED]</div>
+                      </div>
+                    </div>
+
+                    <div class="flex items-center justify-between text-[10px] text-slate-400 z-10 border-t border-slate-700/60 pt-1">
+                      <span>CONF_THRESH: 0.85</span>
+                      <span class="text-blue-300">ZERO_CLOUD_LATENCY</span>
+                    </div>
+                  </div>
+
+                  <!-- Departure Checklist Verification Results -->
+                  <div class="p-3 rounded bg-surface border border-hairline space-y-1.5">
+                    <div class="flex items-center justify-between text-[10px] text-inkSubtle border-b border-hairline pb-1">
+                      <span>DEPARTURE VERIFICATION STATUS</span>
+                      <button id="cvSimulateBtn" class="text-primary hover:underline focus:outline-none">
+                        [Test Re-Scan]
+                      </button>
+                    </div>
+                    <div class="space-y-1 font-sans text-xs">
+                      <div class="flex items-center justify-between">
+                        <span class="text-ink flex items-center gap-1.5 text-xs">
+                          <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i> Student ID Card
+                        </span>
+                        <span class="font-mono text-[10px] text-emerald-600 font-medium">CONFIRMED</span>
+                      </div>
+                      <div class="flex items-center justify-between">
+                        <span class="text-ink flex items-center gap-1.5 text-xs">
+                          <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i> Work Terminal &amp; Charger
+                        </span>
+                        <span class="font-mono text-[10px] text-emerald-600 font-medium">CONFIRMED</span>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+
+              <!-- Right Narrative (6 cols) -->
+              <div class="lg:col-span-6 space-y-4 order-1 lg:order-2">
+                <div class="flex items-center gap-2 font-mono text-xs">
+                  <span class="px-2.5 py-0.5 rounded bg-primaryLight text-primary border border-primaryBorder font-semibold">02 // COMPUTER VISION ENGINE</span>
+                  <span class="text-inkSubtle">APPLIED AI</span>
+                </div>
+
+                <h3 class="text-2xl sm:text-3xl font-serif text-ink font-bold">
+                  CheckMate &mdash; Smart Item Verification System
+                </h3>
+
+                <p class="text-inkMuted text-sm leading-relaxed">
+                  Camera-based verification system detecting required personal items before departure, backed by an automated escalating reminder engine. Built with Python and computer vision classifiers to process optical frames locally, eliminating cloud dependencies for privacy and speed.
+                </p>
+
+                <!-- Technical Specs Grid -->
+                <div class="grid grid-cols-2 gap-3 pt-1 font-mono text-xs">
+                  <div class="p-3 rounded-lg bg-surfaceAlt border border-hairline">
+                    <span class="text-inkSubtle block text-[10px] uppercase">Core Engine</span>
+                    <span class="text-ink font-semibold">Python OpenCV</span>
+                  </div>
+                  <div class="p-3 rounded-lg bg-surfaceAlt border border-hairline">
+                    <span class="text-inkSubtle block text-[10px] uppercase">Alert Logic</span>
+                    <span class="text-ink font-semibold">Escalating Reminder</span>
+                  </div>
+                </div>
+
+                <div class="flex flex-wrap gap-2 pt-1 font-mono text-xs">
+                  <span class="px-2.5 py-1 rounded bg-surfaceAlt border border-hairline text-ink">Computer Vision</span>
+                  <span class="px-2.5 py-1 rounded bg-surfaceAlt border border-hairline text-ink">Python</span>
+                  <span class="px-2.5 py-1 rounded bg-surfaceAlt border border-hairline text-ink">AI/ML</span>
+                  <span class="px-2.5 py-1 rounded bg-surfaceAlt border border-hairline text-ink">Optical Detection</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- PROJECT 3: Innovis | Startup Networking Application -->
+          <div class="pro-card rounded-xl p-6 sm:p-8 bg-surface space-y-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+              
+              <!-- Left Narrative (6 cols) -->
+              <div class="lg:col-span-6 space-y-4">
+                <div class="flex items-center gap-2 font-mono text-xs">
+                  <span class="px-2.5 py-0.5 rounded bg-primaryLight text-primary border border-primaryBorder font-semibold">03 // MOBILE ECOSYSTEM</span>
+                  <span class="text-inkSubtle">KOTLIN &bull; MYSQL</span>
+                </div>
+
+                <h3 class="text-2xl sm:text-3xl font-serif text-ink font-bold">
+                  Innovis &mdash; Startup Networking Application
+                </h3>
+
+                <p class="text-inkMuted text-sm leading-relaxed">
+                  Mobile networking ecosystem connecting startup entrepreneurs with prospective investors. Built secure user authentication pipelines, founder-investor proposal match filters, and pitch proposal submissions backboned by a relational MySQL schema.
+                </p>
+
+                <!-- Technical Specs Grid -->
+                <div class="grid grid-cols-2 gap-3 pt-1 font-mono text-xs">
+                  <div class="p-3 rounded-lg bg-surfaceAlt border border-hairline">
+                    <span class="text-inkSubtle block text-[10px] uppercase">Client App</span>
+                    <span class="text-ink font-semibold">Android Studio (Kotlin)</span>
+                  </div>
+                  <div class="p-3 rounded-lg bg-surfaceAlt border border-hairline">
+                    <span class="text-inkSubtle block text-[10px] uppercase">Database</span>
+                    <span class="text-ink font-semibold">MySQL Relational DB</span>
+                  </div>
+                </div>
+
+                <div class="flex flex-wrap gap-2 pt-1 font-mono text-xs">
+                  <span class="px-2.5 py-1 rounded bg-surfaceAlt border border-hairline text-ink">Android Studio (Kotlin)</span>
+                  <span class="px-2.5 py-1 rounded bg-surfaceAlt border border-hairline text-ink">MySQL</span>
+                  <span class="px-2.5 py-1 rounded bg-surfaceAlt border border-hairline text-ink">Secure Auth</span>
+                  <span class="px-2.5 py-1 rounded bg-surfaceAlt border border-hairline text-ink">Pitch Pipelines</span>
+                </div>
+              </div>
+
+              <!-- Right Code-Rendered UI Simulator (6 cols) -->
+              <!-- Replaces image with a crisp mobile application layout simulator -->
+              <div class="lg:col-span-6 rounded-lg overflow-hidden border border-hairline bg-surface shadow-sm">
+                
+                <div class="h-8 bg-surfaceAlt px-3 flex items-center justify-between border-b border-hairline">
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-2.5 h-2.5 rounded-full bg-slate-300"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-slate-300"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-slate-300"></span>
+                  </div>
+                  <span class="font-mono text-[10px] text-inkSubtle">innovis.mobile &bull; Kotlin Runtime</span>
+                  <span class="font-mono text-[10px] text-primary font-medium">Bcrypt Auth OK</span>
+                </div>
+
+                <div class="p-4 bg-canvas space-y-3 font-sans text-xs">
+                  
+                  <!-- Mobile Pitch Preview Card -->
+                  <div class="p-4 rounded-lg bg-surface border border-hairline space-y-2.5">
+                    <div class="flex items-center justify-between">
+                      <div>
+                        <span class="font-serif font-bold text-base text-ink block">Innovis Match Stream</span>
+                        <span class="font-mono text-[10px] text-inkSubtle">Seed Stage &bull; HealthTech AI</span>
+                      </div>
+                      <span class="px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 font-mono text-[10px] font-semibold">
+                        ACTIVE DEAL
+                      </span>
+                    </div>
+
+                    <p class="text-inkMuted text-xs leading-relaxed">
+                      "Point-of-care mobile hematology screening powered by on-device computer vision."
+                    </p>
+
+                    <div class="flex items-center justify-between pt-1 border-t border-hairline font-mono text-[11px]">
+                      <span class="text-ink font-semibold">Pitch Target: &#8377;50,00,000</span>
+                      <span class="text-primary font-medium">3 Angel Inquiries</span>
+                    </div>
+                  </div>
+
+                  <!-- Architecture Metrics -->
+                  <div class="grid grid-cols-2 gap-2 font-mono text-[11px]">
+                    <div class="p-2.5 rounded bg-surface border border-hairline">
+                      <span class="text-inkSubtle block text-[10px]">AUTH SPEC</span>
+                      <span class="text-ink font-semibold">Bcrypt + JWT Session</span>
+                    </div>
+                    <div class="p-2.5 rounded bg-surface border border-hairline">
+                      <span class="text-inkSubtle block text-[10px]">SCHEMA</span>
+                      <span class="text-ink font-semibold">Normalized MySQL</span>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SECTION 4: PROFESSIONAL EXPERIENCE -->
+      <!-- ========================================== -->
+      <section id="experience" class="space-y-8 reveal-on-scroll">
+        <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-hairline pb-3">
+          <div>
+            <span class="font-mono text-xs text-primary uppercase tracking-widest">// 03 &bull; CHRONOLOGY</span>
+            <h2 class="text-3xl font-serif text-ink tracking-tight mt-1">Professional Experience</h2>
+          </div>
+          <p class="text-xs font-mono text-inkSubtle">Production internships and hands-on engineering</p>
+        </div>
+
+        <div class="relative border-l border-hairline ml-3 sm:ml-4 pl-6 sm:pl-8 space-y-8">
+
+          <!-- Experience 1: Zyno AI -->
+          <div class="relative group">
+            <div class="absolute -left-[31px] sm:-left-[39px] top-2 w-4 h-4 rounded-full bg-canvas border-2 border-primary group-hover:scale-110 transition-transform"></div>
+            
+            <div class="pro-card rounded-xl p-5 sm:p-6 bg-surface space-y-3">
+              <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 border-b border-hairline pb-3">
+                <div>
+                  <h3 class="text-xl font-serif font-bold text-ink">Zyno AI</h3>
+                  <p class="font-mono text-xs text-primary font-medium">AI Data Annotator / Intern &bull; Artificial Intelligence</p>
+                </div>
+                <span class="font-mono text-xs text-inkSubtle bg-surfaceAlt px-3 py-1 rounded-full border border-hairline w-fit">
+                  June &ndash; August 2026
+                </span>
+              </div>
+              <p class="text-inkMuted text-sm leading-relaxed">
+                Annotated and validated large-scale datasets for AI/ML training models, ensuring data accuracy and quality benchmarks. Audited ground-truth annotations to suppress drift and improve model generalization.
+              </p>
+              <div class="flex flex-wrap gap-2 pt-1 font-mono text-[11px]">
+                <span class="px-2.5 py-0.5 rounded bg-surfaceAlt border border-hairline text-ink">Dataset Validation</span>
+                <span class="px-2.5 py-0.5 rounded bg-surfaceAlt border border-hairline text-ink">AI/ML Quality Standards</span>
+                <span class="px-2.5 py-0.5 rounded bg-surfaceAlt border border-hairline text-ink">Model Preprocessing</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Experience 2: CodSoft -->
+          <div class="relative group">
+            <div class="absolute -left-[31px] sm:-left-[39px] top-2 w-4 h-4 rounded-full bg-canvas border-2 border-primary group-hover:scale-110 transition-transform"></div>
+            
+            <div class="pro-card rounded-xl p-5 sm:p-6 bg-surface space-y-3">
+              <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 border-b border-hairline pb-3">
+                <div>
+                  <h3 class="text-xl font-serif font-bold text-ink">CodSoft</h3>
+                  <p class="font-mono text-xs text-primary font-medium">Summer Intern &bull; Artificial Intelligence</p>
+                </div>
+                <span class="font-mono text-xs text-inkSubtle bg-surfaceAlt px-3 py-1 rounded-full border border-hairline w-fit">
+                  May &ndash; June 2026
+                </span>
+              </div>
+              <p class="text-inkMuted text-sm leading-relaxed">
+                Developed applied AI tools: Face Recognition pipelines, Image Classification models, and game AI (Tic-Tac-Toe Minimax with alpha-beta heuristics) in Python.
+              </p>
+              <div class="flex flex-wrap gap-2 pt-1 font-mono text-[11px]">
+                <span class="px-2.5 py-0.5 rounded bg-surfaceAlt border border-hairline text-ink">Python</span>
+                <span class="px-2.5 py-0.5 rounded bg-surfaceAlt border border-hairline text-ink">Face Recognition</span>
+                <span class="px-2.5 py-0.5 rounded bg-surfaceAlt border border-hairline text-ink">Image Classification</span>
+                <span class="px-2.5 py-0.5 rounded bg-surfaceAlt border border-hairline text-ink">Minimax AI</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Experience 3: 8Queens Software Technologies -->
+          <div class="relative group">
+            <div class="absolute -left-[31px] sm:-left-[39px] top-2 w-4 h-4 rounded-full bg-canvas border-2 border-primary group-hover:scale-110 transition-transform"></div>
+            
+            <div class="pro-card rounded-xl p-5 sm:p-6 bg-surface space-y-3">
+              <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 border-b border-hairline pb-3">
+                <div>
+                  <h3 class="text-xl font-serif font-bold text-ink">8Queens Software Technologies Pvt. Ltd., Chennai</h3>
+                  <p class="font-mono text-xs text-primary font-medium">Summer Intern &bull; Full Stack Development</p>
+                </div>
+                <span class="font-mono text-xs text-inkSubtle bg-surfaceAlt px-3 py-1 rounded-full border border-hairline w-fit">
+                  April &ndash; May 2025
+                </span>
+              </div>
+              <p class="text-inkMuted text-sm leading-relaxed">
+                Engineered responsive and interactive web interfaces with HTML, CSS, and modern JavaScript. Tested and debugged frontend components to ensure strict cross-browser performance and accessibility.
+              </p>
+              <div class="flex flex-wrap gap-2 pt-1 font-mono text-[11px]">
+                <span class="px-2.5 py-0.5 rounded bg-surfaceAlt border border-hairline text-ink">HTML5 &amp; CSS3</span>
+                <span class="px-2.5 py-0.5 rounded bg-surfaceAlt border border-hairline text-ink">Modern JavaScript</span>
+                <span class="px-2.5 py-0.5 rounded bg-surfaceAlt border border-hairline text-ink">Component Testing</span>
+                <span class="px-2.5 py-0.5 rounded bg-surfaceAlt border border-hairline text-ink">Debugging QA</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SECTION 5: CAPABILITIES & FILTERABLE MATRIX -->
+      <!-- ========================================== -->
+      <section id="skills" class="space-y-8 reveal-on-scroll">
+        <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-hairline pb-3">
+          <div>
+            <span class="font-mono text-xs text-primary uppercase tracking-widest">// 04 &bull; CAPABILITIES MATRIX</span>
+            <h2 class="text-3xl font-serif text-ink tracking-tight mt-1">System Capabilities &amp; Skills</h2>
+          </div>
+          
+          <!-- Category Filter Tabs -->
+          <div class="flex flex-wrap gap-1.5 font-mono text-xs pt-2 sm:pt-0" id="skillFilterTabs">
+            <button class="skill-filter-btn px-3 py-1 rounded-md bg-ink text-white font-medium transition-all" data-filter="all">All</button>
+            <button class="skill-filter-btn px-3 py-1 rounded-md bg-surfaceAlt text-inkSubtle hover:text-ink transition-all" data-filter="languages">Languages</button>
+            <button class="skill-filter-btn px-3 py-1 rounded-md bg-surfaceAlt text-inkSubtle hover:text-ink transition-all" data-filter="databases">Databases</button>
+            <button class="skill-filter-btn px-3 py-1 rounded-md bg-surfaceAlt text-inkSubtle hover:text-ink transition-all" data-filter="ai">AI / Vision</button>
+            <button class="skill-filter-btn px-3 py-1 rounded-md bg-surfaceAlt text-inkSubtle hover:text-ink transition-all" data-filter="soft">Leadership</button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="skillsGrid">
+
+          <!-- Category 1: Languages & Frameworks -->
+          <div class="skill-card pro-card rounded-xl p-6 filter-item" data-category="languages">
+            <div class="flex items-center gap-2.5 border-b border-hairline pb-3 mb-4">
+              <i data-lucide="code" class="w-4 h-4 text-primary"></i>
+              <h3 class="font-serif font-bold text-lg text-ink">Languages &amp; Frameworks</h3>
+            </div>
+            <div class="flex flex-wrap gap-2 font-mono text-xs">
+              <span class="px-3 py-1.5 rounded bg-surfaceAlt border border-hairline text-ink">React</span>
+              <span class="px-3 py-1.5 rounded bg-surfaceAlt border border-hairline text-ink">Node.js</span>
+              <span class="px-3 py-1.5 rounded bg-surfaceAlt border border-hairline text-ink">JavaScript</span>
+              <span class="px-3 py-1.5 rounded bg-surfaceAlt border border-hairline text-ink">Python</span>
+              <span class="px-3 py-1.5 rounded bg-surfaceAlt border border-hairline text-ink">C# (.NET)</span>
+              <span class="px-3 py-1.5 rounded bg-surfaceAlt border border-hairline text-ink">HTML5</span>
+              <span class="px-3 py-1.5 rounded bg-surfaceAlt border border-hairline text-ink">CSS3</span>
+              <span class="px-3 py-1.5 rounded bg-surfaceAlt border border-hairline text-ink">Kotlin</span>
+            </div>
+          </div>
+
+          <!-- Category 2: Databases & Cloud -->
+          <div class="skill-card pro-card rounded-xl p-6 filter-item" data-category="databases">
+            <div class="flex items-center gap-2.5 border-b border-hairline pb-3 mb-4">
+              <i data-lucide="database" class="w-4 h-4 text-primary"></i>
+              <h3 class="font-serif font-bold text-lg text-ink">Databases &amp; Cloud</h3>
+            </div>
+            <div class="flex flex-wrap gap-2 font-mono text-xs">
+              <span class="px-3 py-1.5 rounded bg-surfaceAlt border border-hairline text-ink">MySQL</span>
+              <span class="px-3 py-1.5 rounded bg-surfaceAlt border border-hairline text-ink">DBMS</span>
+              <span class="px-3 py-1.5 rounded bg-surfaceAlt border border-hairline text-ink">Supabase</span>
+              <span class="px-3 py-1.5 rounded bg-surfaceAlt border border-hairline text-ink">Cloudflare</span>
+              <span class="px-3 py-1.5 rounded bg-surfaceAlt border border-hairline text-ink">PL/SQL</span>
+            </div>
+          </div>
+
+          <!-- Category 3: AI & Specialized -->
+          <div class="skill-card pro-card rounded-xl p-6 filter-item" data-category="ai">
+            <div class="flex items-center gap-2.5 border-b border-hairline pb-3 mb-4">
+              <i data-lucide="sparkles" class="w-4 h-4 text-primary"></i>
+              <h3 class="font-serif font-bold text-lg text-ink">AI &amp; Specialized</h3>
+            </div>
+            <div class="flex flex-wrap gap-2 font-mono text-xs">
+              <span class="px-3 py-1.5 rounded bg-surfaceAlt border border-hairline text-ink">Computer Vision</span>
+              <span class="px-3 py-1.5 rounded bg-surfaceAlt border border-hairline text-ink">OpenCV</span>
+              <span class="px-3 py-1.5 rounded bg-surfaceAlt border border-hairline text-ink">Blender</span>
+              <span class="px-3 py-1.5 rounded bg-surfaceAlt border border-hairline text-ink">Unity</span>
+              <span class="px-3 py-1.5 rounded bg-surfaceAlt border border-hairline text-ink">Figma</span>
+              <span class="px-3 py-1.5 rounded bg-surfaceAlt border border-hairline text-ink">Android Studio</span>
+            </div>
+          </div>
+
+          <!-- Category 4: Soft & Professional -->
+          <div class="skill-card pro-card rounded-xl p-6 filter-item" data-category="soft">
+            <div class="flex items-center gap-2.5 border-b border-hairline pb-3 mb-4">
+              <i data-lucide="users" class="w-4 h-4 text-primary"></i>
+              <h3 class="font-serif font-bold text-lg text-ink">Leadership &amp; Professional</h3>
+            </div>
+            <div class="flex flex-wrap gap-2 font-mono text-xs">
+              <span class="px-3 py-1.5 rounded bg-surfaceAlt border border-hairline text-ink">Leadership</span>
+              <span class="px-3 py-1.5 rounded bg-surfaceAlt border border-hairline text-ink">Communication</span>
+              <span class="px-3 py-1.5 rounded bg-surfaceAlt border border-hairline text-ink">Problem Solving</span>
+              <span class="px-3 py-1.5 rounded bg-surfaceAlt border border-hairline text-ink">Teamwork</span>
+              <span class="px-3 py-1.5 rounded bg-surfaceAlt border border-hairline text-ink">Time Management</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SECTION 6: VERIFIED CERTIFICATIONS -->
+      <!-- ========================================== -->
+      <!-- Entirely photo-free: Clickable digital credential cards that open high-fidelity vector certificates in modal -->
+      <section id="certifications" class="space-y-8 reveal-on-scroll">
+        <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-hairline pb-3">
+          <div>
+            <span class="font-mono text-xs text-primary uppercase tracking-widest">// 05 &bull; VERIFIED CREDENTIALS</span>
+            <h2 class="text-3xl font-serif text-ink tracking-tight mt-1">Verified Certifications</h2>
+          </div>
+          <p class="text-xs font-mono text-inkSubtle">Click any credential card to inspect full digital validation certificate</p>
+        </div>
+
+        <!-- 6 Interactive Digital Credential Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+          <!-- CERT 1: AWS Cloud Foundations -->
+          <div class="cert-card pro-card rounded-xl p-5 flex flex-col justify-between cursor-pointer group bg-surface"
+               data-title="AWS Cloud Foundations"
+               data-issuer="AWS Academy"
+               data-id="AWS-ACAD-7892-OK"
+               data-details="Validation of foundational AWS cloud infrastructure, identity architectures, billing, security compliance, and cloud services.">
+            <div>
+              <div class="w-full h-28 rounded-lg bg-surfaceAlt border border-hairline p-3.5 flex flex-col justify-between group-hover:border-primary transition-colors">
+                <div class="flex items-center justify-between">
+                  <div class="w-7 h-7 rounded bg-ink text-white flex items-center justify-center font-mono font-bold text-xs">
+                    AWS
+                  </div>
+                  <span class="text-[10px] font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 flex items-center gap-1">
+                    <i data-lucide="check" class="w-3 h-3"></i> VERIFIED
+                  </span>
+                </div>
+                <div class="font-mono text-[10px] text-inkSubtle flex justify-between">
+                  <span>ID: AWS-ACAD-7892</span>
+                  <span class="text-primary font-medium">Click to Inspect &rarr;</span>
+                </div>
+              </div>
+
+              <div class="mt-3.5">
+                <span class="font-mono text-[11px] text-primary font-medium">AWS Academy</span>
+                <h3 class="font-serif font-bold text-lg text-ink mt-0.5 group-hover:text-primary transition-colors">AWS Cloud Foundations</h3>
+              </div>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-hairline flex items-center justify-between text-xs font-mono text-inkSubtle">
+              <span>Cloud &bull; Infrastructure</span>
+              <span class="text-primary font-medium">View Certificate</span>
+            </div>
+          </div>
+
+          <!-- CERT 2: Full Stack Development — Infosys Springboard -->
+          <div class="cert-card pro-card rounded-xl p-5 flex flex-col justify-between cursor-pointer group bg-surface"
+               data-title="Full Stack Development"
+               data-issuer="Infosys Springboard"
+               data-id="INFY-FSD-4412-OK"
+               data-details="End-to-end full stack development training covering responsive UI, backend service design, and modern database connectivity.">
+            <div>
+              <div class="w-full h-28 rounded-lg bg-surfaceAlt border border-hairline p-3.5 flex flex-col justify-between group-hover:border-primary transition-colors">
+                <div class="flex items-center justify-between">
+                  <div class="w-7 h-7 rounded bg-ink text-white flex items-center justify-center font-mono font-bold text-xs">
+                    INFY
+                  </div>
+                  <span class="text-[10px] font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 flex items-center gap-1">
+                    <i data-lucide="check" class="w-3 h-3"></i> VERIFIED
+                  </span>
+                </div>
+                <div class="font-mono text-[10px] text-inkSubtle flex justify-between">
+                  <span>ID: INFY-FSD-4412</span>
+                  <span class="text-primary font-medium">Click to Inspect &rarr;</span>
+                </div>
+              </div>
+
+              <div class="mt-3.5">
+                <span class="font-mono text-[11px] text-primary font-medium">Infosys Springboard</span>
+                <h3 class="font-serif font-bold text-lg text-ink mt-0.5 group-hover:text-primary transition-colors">Full Stack Development</h3>
+              </div>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-hairline flex items-center justify-between text-xs font-mono text-inkSubtle">
+              <span>Full Stack &bull; Web</span>
+              <span class="text-primary font-medium">View Certificate</span>
+            </div>
+          </div>
+
+          <!-- CERT 3: AI Fundamentals 2026 — Infosys Springboard -->
+          <div class="cert-card pro-card rounded-xl p-5 flex flex-col justify-between cursor-pointer group bg-surface"
+               data-title="AI Fundamentals 2026"
+               data-issuer="Infosys Springboard"
+               data-id="INFY-AIF-2026-OK"
+               data-details="Certified mastery of core artificial intelligence principles, neural networks, ML taxonomies, and algorithmic problem solving.">
+            <div>
+              <div class="w-full h-28 rounded-lg bg-surfaceAlt border border-hairline p-3.5 flex flex-col justify-between group-hover:border-primary transition-colors">
+                <div class="flex items-center justify-between">
+                  <div class="w-7 h-7 rounded bg-ink text-white flex items-center justify-center font-mono font-bold text-xs">
+                    AI
+                  </div>
+                  <span class="text-[10px] font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 flex items-center gap-1">
+                    <i data-lucide="check" class="w-3 h-3"></i> VERIFIED
+                  </span>
+                </div>
+                <div class="font-mono text-[10px] text-inkSubtle flex justify-between">
+                  <span>ID: INFY-AIF-2026</span>
+                  <span class="text-primary font-medium">Click to Inspect &rarr;</span>
+                </div>
+              </div>
+
+              <div class="mt-3.5">
+                <span class="font-mono text-[11px] text-primary font-medium">Infosys Springboard</span>
+                <h3 class="font-serif font-bold text-lg text-ink mt-0.5 group-hover:text-primary transition-colors">AI Fundamentals 2026</h3>
+              </div>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-hairline flex items-center justify-between text-xs font-mono text-inkSubtle">
+              <span>Artificial Intelligence</span>
+              <span class="text-primary font-medium">View Certificate</span>
+            </div>
+          </div>
+
+          <!-- CERT 4: Data Structures in C++ — Scaler Topics -->
+          <div class="cert-card pro-card rounded-xl p-5 flex flex-col justify-between cursor-pointer group bg-surface"
+               data-title="Data Structures in C++"
+               data-issuer="Scaler Topics"
+               data-id="SCLR-CPP-9921-OK"
+               data-details="Rigorous study of computational complexity, memory pointers, trees, graphs, dynamic programming, and data structure optimization in C++.">
+            <div>
+              <div class="w-full h-28 rounded-lg bg-surfaceAlt border border-hairline p-3.5 flex flex-col justify-between group-hover:border-primary transition-colors">
+                <div class="flex items-center justify-between">
+                  <div class="w-7 h-7 rounded bg-ink text-white flex items-center justify-center font-mono font-bold text-xs">
+                    C++
+                  </div>
+                  <span class="text-[10px] font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 flex items-center gap-1">
+                    <i data-lucide="check" class="w-3 h-3"></i> VERIFIED
+                  </span>
+                </div>
+                <div class="font-mono text-[10px] text-inkSubtle flex justify-between">
+                  <span>ID: SCLR-CPP-9921</span>
+                  <span class="text-primary font-medium">Click to Inspect &rarr;</span>
+                </div>
+              </div>
+
+              <div class="mt-3.5">
+                <span class="font-mono text-[11px] text-primary font-medium">Scaler Topics</span>
+                <h3 class="font-serif font-bold text-lg text-ink mt-0.5 group-hover:text-primary transition-colors">Data Structures in C++</h3>
+              </div>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-hairline flex items-center justify-between text-xs font-mono text-inkSubtle">
+              <span>Algorithms &bull; C++</span>
+              <span class="text-primary font-medium">View Certificate</span>
+            </div>
+          </div>
+
+          <!-- CERT 5: PL/SQL 101 — Infosys Springboard -->
+          <div class="cert-card pro-card rounded-xl p-5 flex flex-col justify-between cursor-pointer group bg-surface"
+               data-title="PL/SQL 101"
+               data-issuer="Infosys Springboard"
+               data-id="INFY-SQL-1010-OK"
+               data-details="In-depth database programming covering procedural SQL, stored procedures, cursor management, exception triggers, and relational schemas.">
+            <div>
+              <div class="w-full h-28 rounded-lg bg-surfaceAlt border border-hairline p-3.5 flex flex-col justify-between group-hover:border-primary transition-colors">
+                <div class="flex items-center justify-between">
+                  <div class="w-7 h-7 rounded bg-ink text-white flex items-center justify-center font-mono font-bold text-xs">
+                    SQL
+                  </div>
+                  <span class="text-[10px] font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 flex items-center gap-1">
+                    <i data-lucide="check" class="w-3 h-3"></i> VERIFIED
+                  </span>
+                </div>
+                <div class="font-mono text-[10px] text-inkSubtle flex justify-between">
+                  <span>ID: INFY-SQL-1010</span>
+                  <span class="text-primary font-medium">Click to Inspect &rarr;</span>
+                </div>
+              </div>
+
+              <div class="mt-3.5">
+                <span class="font-mono text-[11px] text-primary font-medium">Infosys Springboard</span>
+                <h3 class="font-serif font-bold text-lg text-ink mt-0.5 group-hover:text-primary transition-colors">PL/SQL 101</h3>
+              </div>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-hairline flex items-center justify-between text-xs font-mono text-inkSubtle">
+              <span>Relational Databases</span>
+              <span class="text-primary font-medium">View Certificate</span>
+            </div>
+          </div>
+
+          <!-- CERT 6: Control Flow in Studio & Excel Automation — UiPath Academy -->
+          <div class="cert-card pro-card rounded-xl p-5 flex flex-col justify-between cursor-pointer group bg-surface"
+               data-title="Control Flow &amp; Excel Automation"
+               data-issuer="UiPath Academy"
+               data-id="UIP-RPA-5501-OK"
+               data-details="Robotic process automation architectures, conditional control flows, automated tabular data pipelines, and error handling in UiPath Studio.">
+            <div>
+              <div class="w-full h-28 rounded-lg bg-surfaceAlt border border-hairline p-3.5 flex flex-col justify-between group-hover:border-primary transition-colors">
+                <div class="flex items-center justify-between">
+                  <div class="w-7 h-7 rounded bg-ink text-white flex items-center justify-center font-mono font-bold text-xs">
+                    RPA
+                  </div>
+                  <span class="text-[10px] font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 flex items-center gap-1">
+                    <i data-lucide="check" class="w-3 h-3"></i> VERIFIED
+                  </span>
+                </div>
+                <div class="font-mono text-[10px] text-inkSubtle flex justify-between">
+                  <span>ID: UIP-RPA-5501</span>
+                  <span class="text-primary font-medium">Click to Inspect &rarr;</span>
+                </div>
+              </div>
+
+              <div class="mt-3.5">
+                <span class="font-mono text-[11px] text-primary font-medium">UiPath Academy</span>
+                <h3 class="font-serif font-bold text-lg text-ink mt-0.5 group-hover:text-primary transition-colors">Control Flow &amp; Automation</h3>
+              </div>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-hairline flex items-center justify-between text-xs font-mono text-inkSubtle">
+              <span>Automation &bull; RPA</span>
+              <span class="text-primary font-medium">View Certificate</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SECTION 7: CAMPUS SNAPSHOT & LEADERSHIP -->
+      <!-- ========================================== -->
+      <!-- Entirely photo-free: High-fidelity typographic impact cards with vector badges and stats -->
+      <section id="leadership" class="space-y-8 reveal-on-scroll">
+        <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-hairline pb-3">
+          <div>
+            <span class="font-mono text-xs text-primary uppercase tracking-widest">// 06 &bull; GROUNDING &amp; IMPACT</span>
+            <h2 class="text-3xl font-serif text-ink tracking-tight mt-1">Leadership &amp; Academic Grounding</h2>
+          </div>
+          <p class="text-xs font-mono text-inkSubtle">University community initiatives and formal education</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+          
+          <!-- Leadership Cards (7 cols) -->
+          <div class="lg:col-span-7 space-y-4">
+            
+            <!-- CSA Leadership Card -->
+            <div class="pro-card rounded-xl p-6 bg-surface space-y-3">
+              <div class="flex items-center justify-between border-b border-hairline pb-3">
+                <div class="flex items-center gap-3">
+                  <div class="w-9 h-9 rounded-md bg-surfaceAlt border border-hairline flex items-center justify-center text-primary font-mono font-bold text-sm">
+                    CSA
+                  </div>
+                  <div>
+                    <h3 class="font-serif font-bold text-lg text-ink">Centre for Social Action (CSA)</h3>
+                    <p class="font-mono text-xs text-primary font-medium">CHRIST (Deemed to be University) &bull; Student Volunteer (Team Lead)</p>
+                  </div>
+                </div>
+                <span class="font-mono text-[10px] text-inkSubtle bg-surfaceAlt px-2.5 py-1 rounded hidden sm:inline">TEAM LEAD</span>
+              </div>
+              <p class="text-inkMuted text-sm leading-relaxed">
+                Supervised student cohorts in coordinating university-wide community service programs, educational drives, and outreach campaigns. Spearheaded cross-functional team synchronization, task delegation, and logistics management across high-turnout events.
+              </p>
+            </div>
+
+            <!-- Advocacy Bootcamp Card -->
+            <div class="pro-card rounded-xl p-6 bg-surface space-y-3">
+              <div class="flex items-center justify-between border-b border-hairline pb-3">
+                <div class="flex items-center gap-3">
+                  <div class="w-9 h-9 rounded-md bg-surfaceAlt border border-hairline flex items-center justify-center text-primary font-mono font-bold text-sm">
+                    HOST
+                  </div>
+                  <div>
+                    <h3 class="font-serif font-bold text-lg text-ink">Advocacy Bootcamp Event Host</h3>
+                    <p class="font-mono text-xs text-primary font-medium">Led 4-Day Student Advocacy Conference &amp; Competitions</p>
+                  </div>
+                </div>
+                <span class="font-mono text-[10px] text-inkSubtle bg-surfaceAlt px-2.5 py-1 rounded hidden sm:inline">200+ DELEGATES</span>
+              </div>
+              <p class="text-inkMuted text-sm leading-relaxed">
+                Directed ceremonies and moderated debates during a comprehensive 4-day student advocacy conference. Coordinated event agendas, judging criteria for dynamic competitions, and handled crowd engagement for over 200+ delegates.
+              </p>
+            </div>
+
+          </div>
+
+          <!-- Academic Record Card (5 cols) -->
+          <div class="lg:col-span-5 pro-card rounded-xl p-6 bg-surface flex flex-col justify-between space-y-4">
+            
+            <div class="space-y-4">
+              <div class="flex items-center justify-between border-b border-hairline pb-3">
+                <div class="font-mono text-xs font-bold text-ink uppercase tracking-wider flex items-center gap-2">
+                  <i data-lucide="graduation-cap" class="w-4 h-4 text-primary"></i>
+                  <span>FORMAL EDUCATION RECORD</span>
+                </div>
+                <span class="font-mono text-[10px] text-primary">VERIFIED</span>
+              </div>
+
+              <!-- Higher Education -->
+              <div class="p-3.5 rounded-lg bg-surfaceAlt border border-hairline space-y-1">
+                <div class="flex items-center justify-between">
+                  <span class="font-serif font-bold text-base text-ink">CHRIST (Deemed to be University)</span>
+                  <span class="font-mono text-xs font-bold text-primary">3.3 / 4.0</span>
+                </div>
+                <div class="text-xs text-inkMuted font-mono">Bachelor of Computer Applications (BCA)</div>
+                <div class="text-[11px] text-inkSubtle font-mono pt-0.5">Bengaluru &bull; Batch 2024–27</div>
+              </div>
+
+              <!-- High School Record -->
+              <div class="p-3.5 rounded-lg bg-surfaceAlt border border-hairline space-y-2">
+                <div>
+                  <div class="font-serif font-bold text-base text-ink">National Public School, Namakkal</div>
+                  <div class="text-[11px] text-inkSubtle font-mono">Senior Secondary &amp; Secondary Scholastic Record</div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2 font-mono text-xs pt-1">
+                  <div class="p-2.5 rounded bg-surface border border-hairline">
+                    <span class="text-[10px] text-inkSubtle block">Class XII (Senior Secondary)</span>
+                    <span class="font-bold text-ink text-sm">82.0%</span>
+                  </div>
+                  <div class="p-2.5 rounded bg-surface border border-hairline">
+                    <span class="text-[10px] text-inkSubtle block">Class X (Secondary)</span>
+                    <span class="font-bold text-ink text-sm">83.2%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-2 border-t border-hairline text-right font-mono text-[11px] text-inkSubtle">
+              Bengaluru, Karnataka &bull; Verified Christite Scholar
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SECTION 8: DIRECT ACTION CONTACT FOOTER -->
+      <!-- ========================================== -->
+      <section id="contact" class="pb-12 reveal-on-scroll">
+        <div class="pro-card rounded-2xl p-8 sm:p-12 text-center max-w-3xl mx-auto space-y-6 bg-surface">
+          
+          <span class="font-mono text-xs px-3 py-1 rounded-full bg-primaryLight border border-primaryBorder text-primary font-semibold">
+            // INITIATE CONVERSATION
+          </span>
+
+          <h2 class="text-3xl sm:text-4xl font-serif text-ink tracking-tight leading-tight">
+            Ready to build something <span class="italic text-primary">robust &amp; thoughtful?</span>
+          </h2>
+
+          <p class="text-inkMuted text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
+            Actively seeking Software Engineering, Full Stack, and AI/ML internship &amp; entry roles. Have a position, project, or technical question? Let's connect.
+          </p>
+
+          <!-- Interaction Action Triggers -->
+          <div class="pt-2 flex flex-wrap items-center justify-center gap-3">
+            
+            <!-- Direct One-Click Copy Button -->
+            <button id="contactCopyEmailBtn" aria-label="Copy Vandhana's email address"
+                    class="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-ink hover:bg-primary text-white font-mono text-xs font-semibold transition-all shadow-sm active:scale-95">
+              <i data-lucide="copy" class="w-3.5 h-3.5" id="contactCopyIcon"></i>
+              <span id="contactCopyText">vandhana0412@gmail.com</span>
+            </button>
+
+            <!-- Mailto Link -->
+            <a href="mailto:vandhana0412@gmail.com"
+               class="inline-flex items-center gap-2 px-4 py-2.5 rounded-md bg-surface hover:bg-surfaceAlt border border-hairline text-xs font-mono text-ink transition-all active:scale-95">
+              <i data-lucide="mail" class="w-3.5 h-3.5 text-primary"></i>
+              <span>Email Client</span>
+            </a>
+
+            <!-- Phone Link -->
+            <a href="tel:+916382724070"
+               class="inline-flex items-center gap-2 px-4 py-2.5 rounded-md bg-surface hover:bg-surfaceAlt border border-hairline text-xs font-mono text-ink transition-all active:scale-95">
+              <i data-lucide="phone" class="w-3.5 h-3.5 text-primary"></i>
+              <span>+91 63827 24070</span>
+            </a>
+
+            <!-- LinkedIn Link -->
+            <a href="https://www.linkedin.com/in/vandhana-vijayakumar" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-2 px-4 py-2.5 rounded-md bg-surface hover:bg-surfaceAlt border border-hairline text-xs font-mono text-ink transition-all active:scale-95">
+              <i data-lucide="linkedin" class="w-3.5 h-3.5 text-primary"></i>
+              <span>LinkedIn Profile</span>
+              <i data-lucide="external-link" class="w-3 h-3 text-inkSubtle"></i>
+            </a>
+
+          </div>
+
+          <!-- Location Badge -->
+          <div class="pt-4 border-t border-hairline flex items-center justify-center gap-2 font-mono text-xs text-inkSubtle">
+            <i data-lucide="map-pin" class="w-3.5 h-3.5 text-primary"></i>
+            <span>Bengaluru, Karnataka, India &bull; Open to Local &amp; Remote Roles</span>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer Copyright & Build Stamp -->
+    <footer class="border-t border-hairline py-6 bg-surface text-inkSubtle font-mono text-xs">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+          <span>&copy; <span id="currentYear"></span> Vandhana Vijayakumar &bull; Engineered with clean architectural polish.</span>
+        </div>
+        <div class="flex items-center gap-4 text-[11px]">
+          <span>STATUS: ALL_SYSTEMS_NOMINAL</span>
+          <a href="#hero" class="hover:text-primary transition-colors">&uarr; TOP</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- ========================================== -->
+  <!-- DIGITAL CREDENTIAL LIGHTBOX MODAL (PHOTO-FREE) -->
+  <!-- ========================================== -->
+  <!-- Renders an authentic, high-fidelity vector digital credential certificate. No external images required! -->
+  <div id="certLightbox" 
+       class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 opacity-0 pointer-events-none transition-all duration-200"
+       role="dialog" 
+       aria-modal="true" 
+       aria-labelledby="lightboxTitle">
+    
+    <!-- Clean Dimmed Backdrop -->
+    <div id="lightboxBackdrop" class="absolute inset-0 bg-ink/50 backdrop-blur-sm transition-opacity"></div>
+
+    <div class="relative w-full max-w-2xl pro-card rounded-2xl bg-surface p-6 sm:p-8 overflow-hidden shadow-modal z-10 scale-95 transition-all duration-200" id="lightboxModal">
+      
+      <!-- Modal Top Bar -->
+      <div class="flex items-start justify-between gap-4 border-b border-hairline pb-4 mb-5">
+        <div>
+          <span class="font-mono text-xs text-primary font-semibold tracking-wider uppercase" id="lightboxIssuer">
+            <!-- Injected via JS -->
+          </span>
+          <h3 class="text-xl sm:text-2xl font-serif text-ink font-bold mt-0.5" id="lightboxTitle">
+            <!-- Injected via JS -->
+          </h3>
+        </div>
+
+        <button id="closeLightboxBtn" 
+                aria-label="Close modal dialog"
+                class="p-2 rounded-md bg-surfaceAlt hover:bg-surfaceHover border border-hairline text-inkSubtle hover:text-ink transition-all">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <!-- High-Fidelity Vector Digital Certificate Presentation -->
+      <div class="relative w-full rounded-xl bg-canvas border-2 border-hairline p-6 sm:p-8 space-y-5 text-center">
+        
+        <!-- Certificate Guilloche & Issuer Emblem Header -->
+        <div class="flex items-center justify-between border-b border-hairline pb-4">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-md bg-ink text-white flex items-center justify-center font-mono font-bold text-xs">
+              <i data-lucide="award" class="w-4 h-4 text-primaryLight"></i>
+            </div>
+            <span class="font-mono text-xs font-bold text-ink" id="certCertificateBadge">OFFICIAL CREDENTIAL</span>
+          </div>
+          <div class="text-right">
+            <span class="font-mono text-[10px] text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 font-semibold flex items-center gap-1">
+              <i data-lucide="shield-check" class="w-3 h-3"></i> VERIFIED ON RECORD
+            </span>
+          </div>
+        </div>
+
+        <!-- Recipient & Honors -->
+        <div class="py-2 space-y-1">
+          <div class="font-mono text-xs text-inkSubtle uppercase tracking-wider">This officially certifies that</div>
+          <div class="text-2xl sm:text-3xl font-serif text-ink font-bold italic" id="certRecipient">
+            Vandhana Vijayakumar
+          </div>
+          <div class="text-xs font-mono text-inkMuted pt-1">
+            has demonstrated technical proficiency and completed all examination requirements for
+          </div>
+          <div class="text-lg sm:text-xl font-serif font-bold text-primary pt-1" id="certCourseName">
+            Course Title
+          </div>
+        </div>
+
+        <!-- Verification Metadata & Cryptographic Hash -->
+        <div class="grid grid-cols-2 gap-3 pt-2 text-left font-mono text-xs border-t border-hairline">
+          <div class="p-2.5 rounded bg-surface border border-hairline">
+            <span class="text-[10px] text-inkSubtle block">ISSUING INSTITUTION</span>
+            <span class="text-ink font-semibold" id="certInstitution">AWS Academy</span>
+          </div>
+          <div class="p-2.5 rounded bg-surface border border-hairline">
+            <span class="text-[10px] text-inkSubtle block">CREDENTIAL ID</span>
+            <span class="text-ink font-semibold" id="certId">AWS-ACAD-7892-OK</span>
+          </div>
+        </div>
+
+        <p class="text-xs text-inkSubtle leading-relaxed font-sans pt-1" id="lightboxDetails">
+          <!-- Details injected via JS -->
+        </p>
+
+      </div>
+
+      <!-- Action Footer -->
+      <div class="mt-5 pt-3 border-t border-hairline flex flex-wrap items-center justify-between gap-3 text-xs font-mono">
+        <span class="text-inkSubtle flex items-center gap-1.5">
+          <i data-lucide="lock" class="w-3.5 h-3.5 text-primary"></i>
+          <span>Academic Verification Protocol Active</span>
+        </span>
+
+        <button id="copyCertIdBtn" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-surfaceAlt hover:bg-surfaceHover border border-hairline text-ink font-medium transition-colors">
+          <i data-lucide="copy" class="w-3 h-3 text-primary" id="copyCertIcon"></i>
+          <span id="copyCertText">Copy Credential ID</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- REFINED TOAST NOTIFICATION -->
+  <!-- ========================================== -->
+  <div id="toastNotification" class="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 px-4 py-3 rounded-lg bg-ink text-white font-mono text-xs shadow-xl opacity-0 translate-y-3 pointer-events-none transition-all duration-200">
+    <div class="w-4 h-4 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
+      <i data-lucide="check" class="w-3 h-3"></i>
+    </div>
+    <span id="toastMessage">Email copied to clipboard!</span>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- JAVASCRIPT: CONTROLLERS & INTERACTIONS -->
+  <!-- ========================================== -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Set Copyright Year Dynamically
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // ==========================================
+    // READING PROGRESS BAR
+    // ==========================================
+    const progressBar = document.getElementById('readingProgress');
+    window.addEventListener('scroll', () => {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      if (progressBar) progressBar.style.width = scrolled + '%';
+    });
+
+    // ==========================================
+    // LIVE BENGALURU LOCAL TIME CLOCK (IST)
+    // ==========================================
+    function updateBengaluruClock() {
+      const clockEl = document.getElementById('liveTimeClock');
+      if (!clockEl) return;
+      try {
+        const now = new Date();
+        const options = {
+          timeZone: 'Asia/Kolkata',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+          hour12: true
+        };
+        const timeString = new Intl.DateTimeFormat('en-US', options).format(now);
+        clockEl.textContent = `Bengaluru, IN • ${timeString} IST`;
+      } catch (err) {
+        clockEl.textContent = 'Bengaluru, IN • Active';
+      }
+    }
+    updateBengaluruClock();
+    setInterval(updateBengaluruClock, 1000);
+
+    // ==========================================
+    // ACOUSTIC FEEDBACK (WEB AUDIO API)
+    // ==========================================
+    let soundEnabled = true;
+    const sfxToggleBtn = document.getElementById('sfxToggleBtn');
+    const sfxIcon = document.getElementById('sfxIcon');
+    const sfxLabel = document.getElementById('sfxLabel');
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    let audioCtx = null;
+
+    function playTone(freq = 440, type = 'sine', duration = 0.04) {
+      if (!soundEnabled) return;
+      try {
+        if (!audioCtx) audioCtx = new AudioContext();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.015, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+      } catch (e) {
+        // Quiet fallback
+      }
+    }
+
+    if (sfxToggleBtn) {
+      sfxToggleBtn.addEventListener('click', () => {
+        soundEnabled = !soundEnabled;
+        sfxLabel.textContent = soundEnabled ? 'SFX ON' : 'MUTED';
+        sfxIcon.setAttribute('data-lucide', soundEnabled ? 'volume-2' : 'volume-x');
+        lucide.createIcons();
+        if (soundEnabled) playTone(540);
+      });
+    }
+
+    // Attach subtle acoustic feedback to clickable elements
+    document.querySelectorAll('button, a').forEach(el => {
+      el.addEventListener('click', () => playTone(520, 'sine', 0.03));
+    });
+
+    // ==========================================
+    // STAGGERED SCROLL REVEAL (INTERSECTION OBSERVER)
+    // ==========================================
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll('.reveal-on-scroll').forEach(el => revealObserver.observe(el));
+
+    // ==========================================
+    // MOBILE NAVIGATION DRAWER
+    // ==========================================
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+      document.querySelectorAll('.mobile-link').forEach(link => {
+        link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+      });
+    }
+
+    // ==========================================
+    // SKILLS MATRIX FILTER
+    // ==========================================
+    const filterBtns = document.querySelectorAll('.skill-filter-btn');
+    const filterItems = document.querySelectorAll('.filter-item');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => {
+          b.classList.remove('bg-ink', 'text-white');
+          b.classList.add('bg-surfaceAlt', 'text-inkSubtle');
+        });
+        btn.classList.add('bg-ink', 'text-white');
+        btn.classList.remove('bg-surfaceAlt', 'text-inkSubtle');
+
+        const filter = btn.getAttribute('data-filter');
+
+        filterItems.forEach(item => {
+          const category = item.getAttribute('data-category');
+          if (filter === 'all' || category === filter) {
+            item.classList.remove('is-hidden');
+          } else {
+            item.classList.add('is-hidden');
+          }
+        });
+      });
+    });
+
+    // ==========================================
+    // CHECKMATE CV RESCAN SIMULATOR BUTTON
+    // ==========================================
+    const cvSimulateBtn = document.getElementById('cvSimulateBtn');
+    if (cvSimulateBtn) {
+      cvSimulateBtn.addEventListener('click', () => {
+        cvSimulateBtn.textContent = "[Scanning...]";
+        playTone(680);
+        setTimeout(() => {
+          cvSimulateBtn.textContent = "[Scan Complete: 100% Pass]";
+          setTimeout(() => { cvSimulateBtn.textContent = "[Test Re-Scan]"; }, 2500);
+        }, 800);
+      });
+    }
+
+    // ==========================================
+    // DIGITAL CERTIFICATE LIGHTBOX (PHOTO-FREE)
+    // ==========================================
+    const certCards = document.querySelectorAll('.cert-card');
+    const certLightbox = document.getElementById('certLightbox');
+    const lightboxModal = document.getElementById('lightboxModal');
+    const lightboxBackdrop = document.getElementById('lightboxBackdrop');
+    const closeLightboxBtn = document.getElementById('closeLightboxBtn');
+
+    const lightboxTitle = document.getElementById('lightboxTitle');
+    const lightboxIssuer = document.getElementById('lightboxIssuer');
+    const certCourseName = document.getElementById('certCourseName');
+    const certInstitution = document.getElementById('certInstitution');
+    const certId = document.getElementById('certId');
+    const lightboxDetails = document.getElementById('lightboxDetails');
+    const copyCertIdBtn = document.getElementById('copyCertIdBtn');
+    const copyCertText = document.getElementById('copyCertText');
+    const copyCertIcon = document.getElementById('copyCertIcon');
+
+    let activeCertId = '';
+
+    function openLightbox(card) {
+      const title = card.getAttribute('data-title');
+      const issuer = card.getAttribute('data-issuer');
+      const id = card.getAttribute('data-id') || 'VALIDATED-2026';
+      const details = card.getAttribute('data-details');
+
+      activeCertId = id;
+      lightboxTitle.textContent = title;
+      lightboxIssuer.textContent = issuer.toUpperCase();
+      certCourseName.textContent = title;
+      certInstitution.textContent = issuer;
+      certId.textContent = id;
+      lightboxDetails.textContent = details;
+
+      certLightbox.classList.remove('opacity-0', 'pointer-events-none');
+      certLightbox.classList.add('opacity-100');
+      lightboxModal.classList.remove('scale-95');
+      lightboxModal.classList.add('scale-100');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      certLightbox.classList.add('opacity-0', 'pointer-events-none');
+      certLightbox.classList.remove('opacity-100');
+      lightboxModal.classList.add('scale-95');
+      lightboxModal.classList.remove('scale-100');
+      document.body.style.overflow = '';
+    }
+
+    certCards.forEach(card => card.addEventListener('click', () => openLightbox(card)));
+    if (closeLightboxBtn) closeLightboxBtn.addEventListener('click', closeLightbox);
+    if (lightboxBackdrop) lightboxBackdrop.addEventListener('click', closeLightbox);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !certLightbox.classList.contains('pointer-events-none')) {
+        closeLightbox();
+      }
+    });
+
+    if (copyCertIdBtn) {
+      copyCertIdBtn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(activeCertId);
+          copyCertText.textContent = 'Copied!';
+          setTimeout(() => { copyCertText.textContent = 'Copy Credential ID'; }, 2000);
+          showToast(`Credential ID copied: ${activeCertId}`);
+        } catch (err) {
+          showToast(`Credential ID: ${activeCertId}`);
+        }
+      });
+    }
+
+    // ==========================================
+    // CLIPBOARD ACTIONS & TOAST CONTROLLER
+    // ==========================================
+    const heroCopyEmailBtn = document.getElementById('heroCopyEmailBtn');
+    const contactCopyEmailBtn = document.getElementById('contactCopyEmailBtn');
+    const toastNotification = document.getElementById('toastNotification');
+    const toastMessage = document.getElementById('toastMessage');
+    const heroCopyText = document.getElementById('heroCopyText');
+    const contactCopyText = document.getElementById('contactCopyText');
+    let toastTimeout;
+
+    function showToast(message) {
+      clearTimeout(toastTimeout);
+      toastMessage.textContent = message;
+      toastNotification.classList.remove('opacity-0', 'translate-y-3', 'pointer-events-none');
+      toastNotification.classList.add('opacity-100', 'translate-y-0');
+
+      toastTimeout = setTimeout(() => {
+        toastNotification.classList.add('opacity-0', 'translate-y-3', 'pointer-events-none');
+        toastNotification.classList.remove('opacity-100', 'translate-y-0');
+      }, 3200);
+    }
+
+    async function handleCopyEmail() {
+      const email = 'vandhana0412@gmail.com';
+      try {
+        await navigator.clipboard.writeText(email);
+        if (heroCopyText) heroCopyText.textContent = 'Copied!';
+        if (contactCopyText) contactCopyText.textContent = 'Copied!';
+        showToast('Email copied to clipboard: ' + email);
+        setTimeout(() => {
+          if (heroCopyText) heroCopyText.textContent = 'Copy Email';
+          if (contactCopyText) contactCopyText.textContent = email;
+        }, 2200);
+      } catch (err) {
+        const textarea = document.createElement('textarea');
+        textarea.value = email;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        showToast('Email copied to clipboard: ' + email);
+      }
+    }
+
+    if (heroCopyEmailBtn) heroCopyEmailBtn.addEventListener('click', handleCopyEmail);
+    if (contactCopyEmailBtn) contactCopyEmailBtn.addEventListener('click', handleCopyEmail);
+  </script>
+</body>
+</html>
